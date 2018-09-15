@@ -42,5 +42,6 @@ COPY . .
 # Container is a different host with a different IP than our host machine.
 # Address 0.0.0.0 opens debugger for connection from any IP. Of course,
 # we won't do this on live servers.
-CMD ["node", "--inspect=0.0.0.0","index.js"]
+# In Part 2 I moved  CMD to the docker-compose file
+# CMD ["node", "--inspect=0.0.0.0","index.js"]
 

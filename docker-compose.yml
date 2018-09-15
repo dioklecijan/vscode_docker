@@ -1,0 +1,19 @@
+# docker-compose up is equivalent to
+# docker build -t nodejs_app_image .
+# docker run -d --name nodejs_app -p 3000:3000 -p 9229:9229
+# in previous example
+
+version: '3.6'
+
+services:
+  nodejs_app:
+    container_name: nodejs_app
+    image: nodejs_app_image
+    build: .
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    command:
+      - node
+      - '--inspect=0.0.0.0'
+      - 'index.js'
