@@ -66,3 +66,55 @@ To view app output, open another terminal and run
 
     docker logs nodejs_app
 
+## Part 3: Making changes in the source files
+
+So far, whenever we changed source file, we had to rebuild the image and
+restart container which takes time. Our goal in this step is to whenever we
+change the source file on host machine to automatically restart the app.
+To do that we will use `nodemon`. Nodemon watches the changes in project files
+and restarts the server as needed. This is also out first dependency we use.
+
+1. Get the nodemon version info
+
+    yarn info nodemon versions
+
+2. Add `nodemon` dependency in the `package.json`:
+
+```json
+    "devDependencies": {
+        "nodemon": "^1.18.4"
+    }
+```
+
+3. Add `dev` script in package.json.
+
+```json
+    "scripts": {
+        "dev": "nodemon --inspect=0.0.0.0 index.js"
+    }
+```
+
+4. Change the command and add map the project directory in `docker-compose.yml` file:
+
+```yml
+    command:
+    - yarn
+    - 'run'
+    - 'dev'
+    volumes:
+    - .:/usr/nodejs_app
+```
+
+Now we start app server is `yarn run dev`. We also map host app directory to
+container app directory. It is important to specify `node_modules` in 
+`.dockerignore`.
+
+Execute 
+
+    docker-compose up
+
+and test is VS Code debugger is still working. Now, change the `index.js:8` line
+to `response.end('Hello World 2\n');`. You should see that server is automatically
+restarted and changes applied. You do not need to rebuild the image and restart
+container. However, running debugger in VSCode is disconnected and you need to 
+start it again to continue debugging.
