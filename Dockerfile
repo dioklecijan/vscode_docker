@@ -32,6 +32,10 @@ RUN curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$
 # Copy package.json before coping source files to cache node modules
 COPY package.json .
 
+# Copy yarn lock to get consistent installs across machines. If you use
+# npm package manager, instead of yarn.lock copy package-json.lock file.
+COPY yarn.lock .
+
 # Install dependencies
 RUN yarn install
 

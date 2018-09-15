@@ -4,5 +4,11 @@
   "description": "NodeJS apps with vscode and docker",
   "main": "index.js",
   "author": "MG",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "dev": "nodemon --inspect=0.0.0.0 index.js"
+  }
 }
