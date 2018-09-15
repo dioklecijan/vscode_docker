@@ -1,0 +1,8 @@
+{
+  "name": "nodejs_app",
+  "version": "1.0.0",
+  "description": "NodeJS apps with vscode and docker",
+  "main": "index.js",
+  "author": "MG",
+  "license": "MIT"
+}
