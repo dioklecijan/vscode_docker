@@ -2,7 +2,7 @@
 #     docker build -t nodejs_app_image .
 # 
 # To run nodejs_app container:
-#     docker run --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image
+#     docker run --rm --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image
 #     
 #
 # To open terminal in nodejs_app container:
