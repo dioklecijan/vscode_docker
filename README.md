@@ -80,7 +80,7 @@ To do that we will use `nodemon` package. Package `nodemon` watches the changes 
 
 1. Get the `nodemon` version info
 
-    yarn info nodemon versions
+    `yarn info nodemon versions`
 
 2. Add `nodemon` dependency in the `package.json`:
 
