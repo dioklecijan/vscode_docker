@@ -118,5 +118,5 @@ Execute
 and test is VS Code debugger is still working. Now, change the `index.js:8` line
 to `response.end('Hello World 2\n');`. You should see that server is automatically
 restarted and changes applied. You do not need to rebuild the image and restart
-container. However, running debugger in VSCode is disconnected and you need to 
+container manually. However, running debugger in VSCode is disconnected and you need to 
 start it again to continue debugging.
