@@ -1,20 +1,20 @@
 # Using VS Code & Docker for developing and debugging NodeJS apps
 
-## Part 1
+## Part 1: Running NodeJS app in Docker container and debugging in VS Code
 
-This setup covers minimal setup for:
+This step covers minimal setup for:
 
 - running NodeJS app in Docker container.
 - debugging NodeJS app in VS Code.
 
-Take a look at `Dockerfile`, `.vscode/launch.json` and `.dockerignore`.
-They are well documented and self explained.
+Open the git branch 'part_1' and take a look at `Dockerfile`, `.vscode/launch.json` 
+and `.dockerignore`. They are well documented and self explained.
 
 1. Build the image:
 
 `docker build -t nodejs_app_image .`
 
-2. Run the app in the Docker container
+2. Run the app in the Docker container:
 
 `docker run --rm --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image`
 
@@ -27,7 +27,7 @@ They are well documented and self explained.
 Application should stop at the breakpoint.
 
 
-## Part 2: simplifying docker interaction
+## Part 2: Simplifying docker interaction
 
 If we change the source code, we need to stop and remove container, rebuild the
 image and start the container again:
@@ -37,15 +37,18 @@ image and start the container again:
     docker build -t nodejs_app_image .
     docker run --rm --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image 
 
-First command will stop and remove container because of `--rm` flag.
+This workflow can be simplified using `docker-compose` tool. 
 
-This is a quite a lot of things to do. This workflow can be simplified using `docker-compose` tool. Take a look at the `docker-compose.yml`.
+Switch to the git branch 'part_2'. Take a look at the `docker-compose.yml`.
+I moved command for running app from `Dockerfile` to `docker-compose.yml`. 
+This way, my Dockerfile or better say Docker image, is usable for other 
+environments ('test', 'production').
 
 Execute 
   
     docker-compose up
     
-to build image and run container. It has the same effect as
+to build an image and run container. It has the same effect as
 
     docker build -t nodejs_app_image .
     docker run --rm --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image
@@ -65,4 +68,3 @@ When we change the source, we need to rebuild image with
 To view app output, open another terminal and run
 
     docker logs nodejs_app
-
