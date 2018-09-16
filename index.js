@@ -13,4 +13,6 @@ var server = http.createServer(function(request, response) {
 server.listen(3000);
 
 // Put a friendly message on the terminal
-console.log('Server running at http://127.0.0.1:3000/');
+console.log(
+  `Server running at http://127.0.0.1:3000/ in ${process.env.NODE_ENV} mode`
+);

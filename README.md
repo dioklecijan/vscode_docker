@@ -125,3 +125,53 @@ to `response.end('Hello World 2\n');`. You should see that server is automatical
 restarted and changes applied. You do not need to rebuild the image and restart
 container manually. However, running debugger in VSCode is disconnected and you need to 
 start it again to continue debugging.
+
+## Part 4: Using Docker in development and production environments
+
+There are lot of possibilities how and where to define environment variables.
+I'll use `package.json`::
+
+```json
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --inspect=0.0.0.0 index.js",
+    "start": "NODE_ENV=production node index.js"
+  }
+```
+
+For different environments, we need different `docker-compose` configurations:
+
+- `docker-compose.dev.yml`
+- `docker-compose.prod.yml`
+
+
+`docker-compose.dev.yml` is identical to the `docker-compose.yml` in the 
+previous step. 
+
+
+```bash
+# to create and start containers in development mode
+    docker-compose -f docker-compose.dev.yml up
+# to stop and remove use
+    docker-compose -f docker-compose.dev.yml down
+```
+
+`docker-compose.prod.yml` uses `yarn run start` script and does not expose 
+debug port (9229):
+
+```yml
+...
+    ports:
+      - '3000:3000'    
+    command:
+      - yarn
+      - 'run'
+      - 'start'
+...
+```
+
+```bash
+# to create and start containers in production mode
+    docker-compose -f docker-compose.prod.yml up
+# to stop and remove
+    docker-compose -f docker-compose.prod.yml down
+```

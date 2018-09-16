@@ -9,6 +9,7 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "dev": "nodemon --inspect=0.0.0.0 index.js"
+    "dev": "NODE_ENV=development nodemon --inspect=0.0.0.0 index.js",
+    "start": "NODE_ENV=production node index.js"
   }
 }

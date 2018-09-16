@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  nodejs_app:
+    container_name: nodejs_app
+    image: nodejs_app_image
+    # build the image using current directory Dockerfile
+    build: .
+    # ports to expose and map
+    ports:
+      - '3000:3000'
+    # command to run
+    command:
+      - yarn
+      - 'run'
+      - 'start'
+    # volumes to map
+    volumes:
+      - .:/usr/nodejs_app
+      - /usr/nodejs_app/node_modules
