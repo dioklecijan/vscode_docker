@@ -18,3 +18,4 @@ services:
     # volumes to map
     volumes:
       - .:/usr/nodejs_app
+      - /usr/nodejs_app/node_modules

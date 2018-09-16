@@ -96,7 +96,7 @@ To do that we will use `nodemon` package. Package `nodemon` watches the changes 
     }
 ```
 
-4. Change the command and add map the project directory in `docker-compose.yml` file:
+4. Change the command and map the directories in `docker-compose.yml` file.
 
 ```yml
     command:
@@ -105,11 +105,14 @@ To do that we will use `nodemon` package. Package `nodemon` watches the changes 
     - 'dev'
     volumes:
     - .:/usr/nodejs_app
+    - /usr/nodejs_app/node_modules
 ```
 
-Now to start app server we use `yarn run dev`. Host app directory (`.`) is mapped 
+We start the app using `yarn run dev`. Host app directory (`.`) is mapped 
 to the container app directory (`/usr/nodejs_app`). We need this because the 
-changes we make in the source code on the host machine has to be automatically synchronized and applied to the app running in the container.
+changes we make in the source code on the host machine has to be automatically 
+synchronized and applied to the app running in the container. However, we must
+not synchronize `node_modules` between host and container.
 
 Execute 
 
