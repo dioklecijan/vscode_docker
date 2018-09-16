@@ -1,5 +1,7 @@
 # Using VS Code & Docker for developing and debugging NodeJS apps
 
+![./screenshot.png](./screenshot.png)
+
 ## Part 1: Running NodeJS app in Docker container and debugging in VS Code
 
 This step covers minimal setup for:
