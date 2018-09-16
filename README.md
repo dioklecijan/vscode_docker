@@ -73,6 +73,8 @@ To view app output, open another terminal and run
 
 ## Part 3: Automatically applying changes in the Docker app
 
+Switch to the git branch 'part_3'.
+
 So far, whenever we changed source file, we had to rebuild the image and
 restart container which takes time. Our goal in this step is to whenever we
 change the source file on host machine to automatically restart the app.
@@ -127,6 +129,8 @@ container manually. However, running debugger in VSCode is disconnected and you 
 start it again to continue debugging.
 
 ## Part 4: Using Docker in development and production environments
+
+Switch to the git branch 'part_4'.
 
 There are lot of possibilities how and where to define environment variables.
 I'll use `package.json`::
