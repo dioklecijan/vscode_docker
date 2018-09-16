@@ -41,11 +41,3 @@ RUN yarn install
 
 # Copy source code to the image
 COPY . .
-
-# Start app_server in debug mode.
-# Container is a different host with a different IP than our host machine.
-# Address 0.0.0.0 opens debugger for connection from any IP. Of course,
-# we won't do this on live servers.
-# In Part 2 I moved  CMD to the docker-compose file
-# CMD ["node", "--inspect=0.0.0.0","index.js"]
-
