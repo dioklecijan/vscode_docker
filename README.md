@@ -1,20 +1,20 @@
 # Using VS Code & Docker for developing and debugging NodeJS apps
 
-## Part 1
+## Part 1: Running NodeJS app in Docker container and debugging in VS Code
 
-This setup covers minimal setup for:
+This step covers minimal setup for:
 
 - running NodeJS app in Docker container.
 - debugging NodeJS app in VS Code.
 
-Take a look at `Dockerfile`, `.vscode/launch.json` and `.dockerignore`.
-They are well documented and self explained.
+Open the git branch 'part_1' and take a look at `Dockerfile`, `.vscode/launch.json` 
+and `.dockerignore`. They are well documented and self explained.
 
 1. Build the image:
 
 `docker build -t nodejs_app_image .`
 
-2. Run the app in the Docker container
+2. Run the app in the Docker container:
 
 `docker run --rm --name nodejs_app -d -p 3000:3000 -p 9229:9229 nodejs_app_image`
 
